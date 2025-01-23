@@ -9,24 +9,28 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from motor.motor_asyncio import AsyncIOMotorClient
 
+
+#----------------------------------------------------------
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
 )
-
-# Suppress logs for specific libraries
 logging.getLogger("apscheduler").setLevel(logging.ERROR)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("pyrate_limiter").setLevel(logging.ERROR)
-
 LOGGER = logging.getLogger(__name__)
+
+#-------------------------------------------------------------
 
 api_id = 26208465
 api_hash = "bd4e2fe9c30486282417cdf9a93333b2"
 
 mongo_url = "mongodb+srv://harshmanjhi1801:webapp@cluster0.xxwc4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 TOKEN = "7770973256:AAHMZmqygJ3-RVy6vsCtlqqwsUK6rjl8lS4"
+
+
+#-------------------------------------------------------------
 
 app = Client("ddw", api_id=api_id, api_hash=api_hash, bot_token=TOKEN)
 
@@ -51,6 +55,14 @@ GROUP_ID = -100
 
 chat_filter = filters.chat(GROUP_ID)
 
+text_filter = filters.text
+command_filter = filters.create(lambda _, __, message: message.text and message.text.startswith("/"))
+
+streak_data = {"current_streak": 0, "last_correct_user": None}
+
+#--------------------------------------------------------
+
+
 @app.on_message(filters.command("start"))
 async def redirect_to_group(client: Client, message: Message):
     """
@@ -61,6 +73,8 @@ async def redirect_to_group(client: Client, message: Message):
         f"👉 [Click here to join the group!]({group_link})",
         disable_web_page_preview=True,
     )
+
+#-----------------------------------------------------------------
 
 emojis = ["👍", "😘", "❤️", "🔥", "🥰", "🤩", "💘", "😏", "🤯", "⚡️", "🏆", "🤭", "🎉"]
 
@@ -150,14 +164,6 @@ async def send_next_character(message: Message) -> None:
     else:
         await message.reply("⚠️ No more characters available. Please try again later.")
 
-from pyrogram import filters  # Ensure this is the correct import
-
-text_filter = filters.text
-command_filter = filters.create(lambda _, __, message: message.text and message.text.startswith("/"))
-chat_filter = filters.chat(GROUP_ID)
-
-# Add a global streak counter
-streak_data = {"current_streak": 0, "last_correct_user": None}
 
 @app.on_message(filters.text & ~command_filter)
 async def handle_guess(client: Client, message: Message):
