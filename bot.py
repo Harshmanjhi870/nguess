@@ -240,5 +240,5 @@ async def handle_guess(client: Client, message: Message):
             await send_character(message, ongoing_sessions[chat_id]["current_character"])
 
 
-app()
+app.run()
 print("bot start successfully!")
