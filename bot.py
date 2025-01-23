@@ -25,6 +25,7 @@ LOGGER = logging.getLogger(__name__)
 api_id = 26208465
 api_hash = "bd4e2fe9c30486282417cdf9a93333b2"
 
+mongo_url = "mongodb+srv://harshmanjhi1801:webapp@cluster0.xxwc4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 TOKEN = "7770973256:AAHMZmqygJ3-RVy6vsCtlqqwsUK6rjl8lS4"
 
 app = Client("ddw", api_id=api_id, api_hash=api_hash, bot_token=TOKEN)
