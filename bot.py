@@ -70,7 +70,13 @@ async def redirect_to_group(client: Client, message: Message):
     """
     group_link = "https://t.me/TEAMZYRO"  # Replace with your group link
     await message.reply(
-        f"👉 [Click here to join the group!]({group_link})",
+        f"""
+         HEY BABY ITS TEAM ZYRO NGUESS
+         GAMING BOT 
+         THIS BOT USED ONLY 
+        👉 [TEAM ZYRO]({group_link})
+        👉 [TEAM ZYRO 2](https://t.me/TEAMZYRO)
+        JOIN AND ENJOY THE GAME""",
         disable_web_page_preview=True,
     )
 
