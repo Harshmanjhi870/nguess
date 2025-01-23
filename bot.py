@@ -68,7 +68,7 @@ async def redirect_to_group(client: Client, message: Message):
     """
     Redirects users to the specified group when they attempt to use the /nguess command in the wrong group.
     """
-    group_link = "https://t.me/TEAMZYRO"  # Replace with your group link
+    group_link = "https://t.me/PiratesMainchat"  # Replace with your group link
     await message.reply(
         f"""
          HEY BABY ITS TEAM ZYRO NGUESS
