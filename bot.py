@@ -47,6 +47,7 @@ GUESS_TIMEOUT = 48 * 60 * 60  # 48 hours timeout for each guess session
 ongoing_sessions = {}
 user_total_guesses = {}
 
+GROUP_ID = -100
 
 chat_filter = filters.chat(GROUP_ID)
 
